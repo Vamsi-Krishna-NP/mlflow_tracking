@@ -51,6 +51,9 @@ with mlflow.start_run(run_name=run_name):
     r2 = r2_score(y_test, y_pred)
     
     mlflow.log_metrics({"mae": mae, "mse": mse, "rmse": rmse, "r2": r2})
+    
+    remote_server_uri = "https://dagshub.com/Vamsi_Krishna/mlflow_tracking.mlflow"
+    mlflow.set_tracking_uri(remote_server_uri)
 
     tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
     
